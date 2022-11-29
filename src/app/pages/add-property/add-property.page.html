@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Property</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>New Property Info</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="property_formgroup" (ngSubmit)="create_property()">
+        <ion-list>
+          <ion-item>
+            <ion-label>Stand Number: </ion-label>
+            <ion-input formControlName="stand_number" placeholder="Enter stand number..." required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Property Number: </ion-label>
+            <ion-input formControlName="property_number" placeholder="Enter property number..." required></ion-input>
+          </ion-item>
+          <ion-list>
+            <ion-label>Address Components:</ion-label>
+            <ion-item>
+              <ion-label>Street Number: </ion-label>
+              <ion-input formControlName="street_number" placeholder="Enter street number..." required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Street Name: </ion-label>
+              <ion-input formControlName="street_name" placeholder="Enter street name..." required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Suburb: </ion-label>
+              <ion-input formControlName="suburb" placeholder="Enter suburb..." required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>City: </ion-label>
+              <ion-input formControlName="city" placeholder="Enter suburb..." required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Postal Code: </ion-label>
+              <ion-input formControlName="postal_code" placeholder="Enter suburb..." type="number" required></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-item>
+            <ion-label>Latitude and Longitude:</ion-label>
+            <ion-input formControlName="latitude" placeholder="Enter lat..." type="number" required></ion-input>
+            <ion-input formControlName="longitude" placeholder="Entet lng..." type="number" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Stand Size: </ion-label>
+            <ion-input formControlName="stand_size" placeholder="Entet stand size..." type="number" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Builing Size: </ion-label>
+            <ion-input formControlName="building_size" placeholder="Entet builing size..." type="number" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="file" type="file" (change)="inputChange($event)" [hidden]></ion-input>
+            <ion-button>Upload Photo</ion-button>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-button type="submit" expand="block" [disabled]="!property_formgroup.valid">Add New Property</ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
