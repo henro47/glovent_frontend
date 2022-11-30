@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/services/alert.service';
-import { ApiService } from 'src/app/services/api.service';
+import { ActivatedRoute } from '@angular/router';
+import { AlertService } from '../services/alert.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
-  selector: 'app-add-property',
-  templateUrl: './add-property.page.html',
-  styleUrls: ['./add-property.page.scss'],
+  selector: 'app-update-property',
+  templateUrl: './update-property.page.html',
+  styleUrls: ['./update-property.page.scss'],
 })
-export class AddPropertyPage implements OnInit {
+export class UpdatePropertyPage implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,
-    private api_service: ApiService,
+  constructor(private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private api_servive: ApiService,
     private alert_service: AlertService) { }
+  property_id: String = "";
 
   file: any;
   property_formgroup = this.formBuilder.group({
-    stand_number: ['', Validators.required],
-    property_number: ['', Validators.required],
-    street_number: ['', Validators.required],
-    street_name: ['', Validators.required],
-    suburb: ['', Validators.required],
-    city: ['', Validators.required],
-    postal_code: ['', Validators.required],
-    latitude: ['', Validators.required],
-    longitude: ['', Validators.required],
-    stand_size: ['', Validators.required],
-    building_size: ['', Validators.required],
-    file: ['', Validators.required],
+    stand_number: [''],
+    property_number: [''],
+    street_number: [''],
+    street_name: [''],
+    suburb: [''],
+    city: [''],
+    postal_code: [''],
+    latitude: [''],
+    longitude: [''],
+    stand_size: [''],
+    building_size: [''],
+    file: [''],
   });
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.property_id = params['id'];
+    });
   }
-
-  create_property() {
+  
+  update_property() {
     console.log(this.property_formgroup.value);
 
     let formData: FormData = new FormData();
@@ -64,20 +70,35 @@ export class AddPropertyPage implements OnInit {
     formData.append('stand_size', String(this.property_formgroup.value.stand_size));
     formData.append('building_size', String(this.property_formgroup.value.building_size));
 
-    this.api_service.create_property(formData).subscribe((response)=>{
+    this.api_servive.update_property(this.property_id, formData).subscribe((response)=>{
       console.log(response);
-      this.alert_service.SuccessfulAlert();
     },
     (error)=>{
       console.log(error);
-      this.alert_service.internalErrorAlert();
-    })
-
-    this.property_formgroup.reset();
+    });
   }
 
   inputChange(fileInputEvent: any) {
     this.file = fileInputEvent.target.files[0];
     console.log(this.file);
+  }
+
+  remove_property() {
+    this.alert_service.InputValidationAlert(this.property_id, (is_valid: boolean) => {
+      if (is_valid) {
+        this.api_servive.remove_property(this.property_id).subscribe((response) => {
+          console.log(response);
+          this.alert_service.SuccessfulAlert();
+        },
+          (error) => {
+            console.error(error);
+            this.alert_service.internalErrorAlert();
+          })
+      }
+      else{
+        this.alert_service.badRequestAlert();
+      }
+    });
+
   }
 }

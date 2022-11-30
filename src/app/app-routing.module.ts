@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'add-property',
     loadChildren: () => import('./pages/add-property/add-property.module').then( m => m.AddPropertyPageModule)
   },
+  {
+    path: 'update-property/:id',
+    loadChildren: () => import('./update-property/update-property.module').then( m => m.UpdatePropertyPageModule)
+  },
 ];
 
 @NgModule({

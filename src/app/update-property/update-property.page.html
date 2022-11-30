@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update Property</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Update Property Info ({{property_id}})</ion-card-title>
+      <ion-button color="danger" (click)="remove_property()"> Delete </ion-button>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="property_formgroup" (ngSubmit)="update_property()">
+        <ion-list>
+          <ion-item>
+            <ion-label>Stand Number: </ion-label>
+            <ion-input formControlName="stand_number" placeholder="Enter stand number..."></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Property Number: </ion-label>
+            <ion-input formControlName="property_number" placeholder="Enter property number..."></ion-input>
+          </ion-item>
+          <ion-list>
+            <ion-label>Address Components:</ion-label>
+            <ion-item>
+              <ion-label>Street Number: </ion-label>
+              <ion-input formControlName="street_number" placeholder="Enter street number..."></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Street Name: </ion-label>
+              <ion-input formControlName="street_name" placeholder="Enter street name..." ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Suburb: </ion-label>
+              <ion-input formControlName="suburb" placeholder="Enter suburb..." ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>City: </ion-label>
+              <ion-input formControlName="city" placeholder="Enter suburb..." ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Postal Code: </ion-label>
+              <ion-input formControlName="postal_code" placeholder="Enter suburb..." type="number" ></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-item>
+            <ion-label>Latitude and Longitude:</ion-label>
+            <ion-input formControlName="latitude" placeholder="Enter lat..." type="number" ></ion-input>
+            <ion-input formControlName="longitude" placeholder="Entet lng..." type="number" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Stand Size: </ion-label>
+            <ion-input formControlName="stand_size" placeholder="Entet stand size..." type="number" >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Builing Size: </ion-label>
+            <ion-input formControlName="building_size" placeholder="Entet builing size..." type="number" >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="file" type="file" accept="image/png, image/jpeg" (change)="inputChange($event)"
+              [hidden]></ion-input>
+            <ion-button>Upload New Photo</ion-button>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-button type="submit" expand="block">Update Property</ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

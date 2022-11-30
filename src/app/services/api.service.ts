@@ -35,7 +35,7 @@ export class ApiService {
   }
 
   update_property(id: String, request_obj: Object): Observable<HttpResponse<any>> {
-    return this.http.put<any>(this.URL + '/properties/' + id, request_obj, {
+    return this.http.patch<any>(this.URL + '/properties/' + id, request_obj, {
       observe: 'response'
     });
   }

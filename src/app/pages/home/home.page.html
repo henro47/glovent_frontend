@@ -12,7 +12,7 @@
   </ion-item>
   <ion-list>
     <ion-item *ngFor="let property of properties">
-      <ion-card>
+      <ion-card [routerLink]="['/update-property', property._id]">
         <img alt="Propety Image" src="{{property.photo_url}}" />
         <ion-card-header>
           <ion-card-title>ID: {{property._id}}</ion-card-title>
