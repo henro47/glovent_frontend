@@ -10,6 +10,43 @@
   <ion-item>
     <ion-label>Number of Properties: {{property_count}}</ion-label>
   </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let property of properties">
+      <ion-card>
+        <img alt="Propety Image" src="{{property.photo_url}}" />
+        <ion-card-header>
+          <ion-card-title>ID: {{property._id}}</ion-card-title>
+          <ion-card-subtitle>
+            <ion-label>Stand Number: {{property.stand_number}}</ion-label>
+            <ion-label>Property Number: {{property.property_number}}</ion-label>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>{{property.address.street_no}} {{property.address.street_name}} {{property.address.suburb}}
+                {{property.address.city}} {{property.address.postal_code}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>({{property.GPS_lat_lng.lat}}, {{property.GPS_lat_lng.lng}})</ion-label>
+            </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-label>Building Size: {{property.building_size}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Stand Size: {{property.stand_size}}</ion-label>
+            </ion-item>
+          </ion-list>
+          <ion-item>Created at: {{property.created_at}}</ion-item>
+          <ion-item>Updated at: {{property.updated_at}}</ion-item>
+          <ion-item>Deleted at: {{property.deleted_at}}</ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button [routerLink]="['/add-property']">

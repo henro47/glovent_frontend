@@ -57,7 +57,7 @@
             <ion-input formControlName="building_size" placeholder="Entet builing size..." type="number" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input formControlName="file" type="file" (change)="inputChange($event)" [hidden]></ion-input>
+            <ion-input formControlName="file" type="file" accept="image/png, image/jpeg" (change)="inputChange($event)" [hidden]></ion-input>
             <ion-button>Upload Photo</ion-button>
           </ion-item>
         </ion-list>

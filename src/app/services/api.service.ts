@@ -22,8 +22,8 @@ export class ApiService {
     });
   }
 
-  create_property(request_obj: Object): Observable<HttpResponse<any>> {
-    return this.http.post<any>(this.URL + '/properties/', request_obj, {
+  create_property(form_data: FormData): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.URL + '/properties/', form_data, {
       observe: 'response'
     });
   }
