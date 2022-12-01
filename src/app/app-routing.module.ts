@@ -17,10 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'update-property/:id',
-    loadChildren: () => import('./update-property/update-property.module').then( m => m.UpdatePropertyPageModule)
-  },  {
+    loadChildren: () => import('./pages/update-property/update-property.module').then( m => m.UpdatePropertyPageModule)
+  },
+  {
     path: 'map-view',
-    loadChildren: () => import('./map-view/map-view.module').then( m => m.MapViewPageModule)
+    loadChildren: () => import('./pages/map-view/map-view.module').then( m => m.MapViewPageModule)
   },
 
 ];

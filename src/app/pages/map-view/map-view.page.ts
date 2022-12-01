@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.page.html',

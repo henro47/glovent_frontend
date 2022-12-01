@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AlertService } from '../services/alert.service';
-import { ApiService } from '../services/api.service';
+import { AlertService } from '../../services/alert.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-update-property',
