@@ -72,9 +72,11 @@ export class UpdatePropertyPage implements OnInit {
 
     this.api_servive.update_property(this.property_id, formData).subscribe((response) => {
       console.log(response);
+      this.alert_service.SuccessfulAlert();
     },
       (error) => {
         console.log(error);
+        this.alert_service.internalErrorAlert();
       });
   }
 
