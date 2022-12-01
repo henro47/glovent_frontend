@@ -38,7 +38,7 @@ export class UpdatePropertyPage implements OnInit {
       this.property_id = params['id'];
     });
   }
-  
+
   update_property() {
     console.log(this.property_formgroup.value);
 
@@ -70,12 +70,12 @@ export class UpdatePropertyPage implements OnInit {
     formData.append('stand_size', String(this.property_formgroup.value.stand_size));
     formData.append('building_size', String(this.property_formgroup.value.building_size));
 
-    this.api_servive.update_property(this.property_id, formData).subscribe((response)=>{
+    this.api_servive.update_property(this.property_id, formData).subscribe((response) => {
       console.log(response);
     },
-    (error)=>{
-      console.log(error);
-    });
+      (error) => {
+        console.log(error);
+      });
   }
 
   inputChange(fileInputEvent: any) {
@@ -95,10 +95,9 @@ export class UpdatePropertyPage implements OnInit {
             this.alert_service.internalErrorAlert();
           })
       }
-      else{
+      else {
         this.alert_service.badRequestAlert();
       }
     });
-
   }
 }

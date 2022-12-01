@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Map View</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <google-map height="100%" width="100%" [zoom]="zoom" [center]="center" [options]="options">
+    <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options"></map-marker>
+  </google-map>
+</ion-content>
